@@ -16,10 +16,6 @@
 
 import csv
 import json
-#import math
-
-#import itertools
-#list(itertools.permutations([1, 2, 3]))
 
 ## unique elements in list
 ## https://www.peterbe.com/plog/uniqifiers-benchmark
@@ -45,8 +41,7 @@ for question in questions:
         for row in read:
             distribution.append(row[question].split(';'))
     
-    #distribution = [elh, el0,el1,el2,el3,el4,el5,el6]
-     # find the set of all answers
+    # find the set of all answers and give a hash code
     answers = {}
     j = 1
     for i in range(1, len(distribution)):
@@ -55,9 +50,7 @@ for question in questions:
                 answers[ans]= pow(len(distribution)-1,j)+1
                 j+=1
                 
-    # possible answers are in a 
-    #def hash_it(answerlist, answers):
-            
+           
     # one selection
     conn = []
     count = []
@@ -95,8 +88,4 @@ for question in questions:
     filename = "{}.json".format(head[0][question].replace(" ","_").strip("?"))
     # remove duplicates from the connlist and save to file
     json.dump(f4(conn), open(filename ,"w") )
-    #all_result[filename.strip(".json")] = f4(conn)
-
-#save to file
-#filename = "survey.json"
-#json.dump(all_result, open(filename ,"w") )
+    
